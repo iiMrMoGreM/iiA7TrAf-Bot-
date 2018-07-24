@@ -48,7 +48,6 @@ client.on('ready', () => {
   console.log('')
 });
 
-
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "mute")) {
@@ -68,7 +67,14 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-
+    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
     if(mention.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -148,6 +154,7 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
   }
 });
+
     client.on('message', msg => { 
       if (msg.content.startsWith(`$sug`)) {
          let args = msg.content.split(" ").slice(1);
