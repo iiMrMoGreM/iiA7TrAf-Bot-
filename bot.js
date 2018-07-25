@@ -279,83 +279,83 @@ channel.guild.owner.send(`<@!${channelremover.id}>
 
 
 
+client.on('message', message =>{
+  let args = message.content.split(' ');
+  let prefix = '.';
+if(args[0] === `${prefix}emoji`){
+let findEmoji = args[1];
 
+if(!findEmoji || findEmoji === '') return  message.reply(`**أدخل الايموجي**`);
 
-   const math = require('math-expression-evaluator');   
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'calc')) {
-    if(!message.channel.guild) return message.reply(' Error : \` Guild Command \`');
-           var Canvas = module.require('canvas');
-           var jimp = module.require('jimp');
-   
-    const w = ['./math.png'];
-   
-            let Image = Canvas.Image,
-                canvas = new Canvas(802, 404),
-                ctx = canvas.getContext('2d');
-            ctx.patternQuality = 'bilinear';
-            ctx.filter = 'bilinear';
-            ctx.antialias = 'subpixel';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-            ctx.shadowOffsetY = 2;
-            ctx.shadowBlur = 2;
-            fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-                if (err) return console.log(err);
-                let BG = Canvas.Image;
-                let ground = new Image;
-                ground.src = Background;
-                ctx.drawImage(ground, 0, 0, 802, 404);
-   
-    })
-        let args = message.content.split(" ").slice(1);
-       const question = args.join(' ');
-   if (args.length < 1) {
-       message.reply('Specify a equation, please.\n\ Ex: #calc 5+5 ' );
-} else {    let answer;
-   try {
-       answer = math.eval(question);
-   } catch (err) {
-       message.reply(`Error: ${err}`);
-   }
-var ment = message.mentions.users.first();
-           var getvalueof;
-           if(ment) {
-             getvalueof = ment;
-           } else {
-             getvalueof = message.author;
-           }
-                                          let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
-                                            jimp.read(url, (err, ava) => {
-                                                if (err) return console.log(err);
-                                                ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                                                    if (err) return console.log(err);
-                                                                             
-                           
-                                                    ctx.font = '42px Arial Bold';//Name ,_,
-                                                    ctx.fontSize = '50px';
-                                                    ctx.fillStyle = "#ffffff";
-                                                    ctx.fillText(`${answer}`,108, 130);
-                                                    
-                                                    
-                                                     ctx.font = '25px Arial Bold';//Name ,_,
-                                                    ctx.fontSize = '30px';
-                                                    ctx.fillStyle = "#ffffff";
-                                                    ctx.fillText(`${question}`,105, 90);
+let EmojiId = findEmoji.slice(findEmoji.length - 19,findEmoji.length -1);
 
-                           
-                                ctx.beginPath();
-                                ctx.stroke();
-                              message.channel.sendFile(canvas.toBuffer());
-                           
-                           
-                         
-                           
-                            })
-                           
-                            })
-}
-}
+if(isNaN(EmojiId)) return message.reply(`**لم استطع العثور على الايموجي المطلوب**`);
+
+let EmojiURL = `https://cdn.discordapp.com/emojis/${EmojiId}.png`;
+
+let EmojiEmbed = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle(`Link Emoji ${findEmoji}`)
+.setURL(`${EmojiURL}`)
+.setImage(`${EmojiURL}`)
+
+message.channel.send({ embed  : EmojiEmbed });
+
+};
 });
+
+
+
+
+```js
+client.on('message', message => {
+   if (message.content.startsWith("=idd")) {
+                if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+               var mentionned = message.mentions.users.first();
+    var mentionavatar;
+      if(mentionned){
+          var mentionavatar = mentionned;
+      } else {
+          var mentionavatar = message.author;
+          
+      }
+   let embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+   .setThumbnail(`${mentionavatar.avatarURL}`)
+  .addField("Name:",`<@` + `${mentionavatar.id}` + `>`, true)
+  .addField('Discrim:',"#" +  `${mentionavatar.discriminator}`, true)
+   .addField("ID:", "**[" + `${mentionavatar.id}` + "]**", true)
+  .addField("Create At:", "**[" + `${mentionavatar.createdAt}` + "]**", true)
+     
+     
+  message.channel.sendEmbed(embed);
+  console.log('[id] Send By: ' + message.author.username)
+    }
+});
+
+
+
+
+client.on('message', function(msg) {
+    const prefix = '+'
+    if(msg.content.startsWith (prefix  + 'server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+      .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('🔵**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField('📝**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('🎤**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField('👑**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+      .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
+      .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+      msg.channel.send({embed:embed});
+    }
+  });
 
 
 client.login(process.env.BOT_TOKEN);
