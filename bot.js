@@ -378,7 +378,7 @@ client.on('message', message => {
 var kboosh_id = "471548405626306560";
                     var i = "0";
                     var x = "0";
-kboosh.on("voiceChannelJoin", (msg) => {
+
     x++;
     kboosh.editChannel(kboosh_id, { name : "Voice ⇏「" + x + "」"});
 });
