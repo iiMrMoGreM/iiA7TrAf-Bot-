@@ -382,7 +382,7 @@ client.on('message', function (message) {
 
 
     switch (command) {
-        case "-join":
+        case "$join":
         if(message.guild.voiceConnection){
             message.reply('I\'m Already In A Voice Connection!');
         }else if(!message.member.voiceChannel){
@@ -392,7 +392,7 @@ client.on('message', function (message) {
     channel.join();
         }
             break;
-case "-play":
+case "$play":
         if(!message.guild.voiceConnection){
             message.reply('I\'m Not In A Voice Channel!');
         }else{
