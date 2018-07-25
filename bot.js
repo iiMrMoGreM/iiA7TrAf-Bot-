@@ -492,6 +492,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 
+
 client.on("message", message => {
 
               
