@@ -322,7 +322,7 @@ client.on('message', message => {
       }
    let embed = new Discord.RichEmbed()
   .setColor("RANDOM")
-   .setThumbnail(`${mentionavatar.avatarURL}`)
+   
   .addField("Name:",`<@` + `${mentionavatar.id}` + `>`, true)
   .addField('Discrim:',"#" +  `${mentionavatar.discriminator}`, true)
    .addField("ID:", "**[" + `${mentionavatar.id}` + "]**", true)
