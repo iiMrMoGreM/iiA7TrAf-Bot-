@@ -432,4 +432,76 @@ client.on("message", message => {
         }
     });
 
+
+
+var Discord = require("discord.js")
+,   moment = require("moment")
+,   client=new Discord.Client()
+
+client.on('message', message => {
+
+    var args = message.content.split(' ')
+    if (message.content.toLowerCase().startsWith(prefix+"invite")) {
+var [embed,inv,uses]=[new Discord.RichEmbed(),null,''];
+message.guild.fetchInvites().then(i =>{
+    
+    inv=i.get(args[1])
+    if(inv.maxUses){
+        uses=+inv.uses+"/"+inv.maxUses
+    }else{
+        uses=+inv.uses
+    }
+
+
+
+      message.channel.send(new Discord.RichEmbed().setTitle('invite info').setAuthor(message.author.tag,message.author.displayAvatarURL)
+    .addField('inviter',i.get(args[1]).inviter,true)
+    .addField('createdAt',moment(i.get(args[1]).createdAt).format('YYYY/M/DD:h'),true)
+    .addField('expiresAt',moment(i.get(args[1]).expiresAt).format('YYYY/M/DD:h'),true)
+    .addField('channel',i.get(args[1]).channel,true)
+    .addField('uses',uses,true)
+    .addField('maxAge',i.get(args[1]).maxAge,true).setColor(030101).setFooter('By: '+message.author.tag,message.author.displayAvatarURL)
+    
+);
+        })}
+    });
+
+
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'welcome');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return;
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('🎽 | name :  ',`${member}`)
+        .addField('📢 | نورت السيرفر يا قلبي' , `Welcome to the server, ${member}`)
+        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+               
+                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+                     
+                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
+                                       
+     .setFooter(`${member.guild.name}`)
+        .setTimestamp()
+   
+      channel.sendEmbed(embed);
+    });
+    
+    client.on('guildMemberRemove', member => {
+        var embed = new Discord.RichEmbed()
+        .setAuthor(member.user.username, member.user.avatarURL)
+        .setThumbnail(member.user.avatarURL)
+        .setTitle(`الله معاك ✋:skin-tone-1: 😔`)
+        .setDescription(`مع السلامه تشرفنا بك ✋:skin-tone-1: 😔 `)
+        .addField('👤   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+        .setColor('RED')
+        .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
+    
+    var channel =member.guild.channels.find('name', 'welcome')
+    if (!channel) return;
+    channel.send({embed : embed});
+    })
+
 client.login(process.env.BOT_TOKEN);
