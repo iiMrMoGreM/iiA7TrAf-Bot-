@@ -155,22 +155,7 @@ client.on('message', async message => {
   }
 });
 
-    client.on('message', msg => { 
-      if (msg.content.startsWith(`$sug`)) {
-         let args = msg.content.split(" ").slice(1);
-        if (!args[1]) return msg.reply('يجب كتابه الاقتراح')
-        if (msg.guild.channels.find('name', '🤔𝓼𝓾𝓰𝓰𝓮𝓼𝓽🤔')) {
-          msg.guild.channels.find('name', '🤔𝓼𝓾𝓰𝓰𝓮𝓼𝓽🤔').send(`
-          ${msg.member} : الأقتراح من 
-		  
-         **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}** : الأقتراح 
-        `)
-        }
-      }
-      })
-
-  
-
+   
 
 
 client.on('ready', () => {
