@@ -170,6 +170,7 @@ client.on('message', async message => {
       })
 
   client.on('message', async message => {
+  const moment = require('moment');
   let messageArray = message.content.split(' ');
   let args = messageArray.slice(1);
   if(message.content.startsWith(prefix + "invite")) {
