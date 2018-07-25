@@ -408,7 +408,7 @@ case "$play":
 
 client.on('message', message => {
     let args = message.content.split(" ").slice(1);
-if (message.content.startsWith(prefix + 'مسح')) {
+if (message.content.startsWith(prefix + 'clear')) {
  let args = message.content.split(" ").slice(1)
     let messagecount = parseInt(args);
     if (args > 100) return message.reply("اعلى حد للمسح هو 100").then(messages => messages.delete(5000))
@@ -418,5 +418,18 @@ if (message.content.startsWith(prefix + 'مسح')) {
   }
   });
 
+
+client.on("message", message => {
+  
+    if (!message.content.startsWith(prefix)) return;
+      let command = message.content.split(" ")[0];
+      command = command.slice(prefix.length);
+        if(command === "mcskin") {
+                const args = message.content.split(" ").slice(1).join(" ")
+        if (!args) return message.channel.send("** Type your skin name **");
+        const image = new Discord.Attachment(`https://minotar.net/armor/body/${args}`, "skin.png");
+    message.channel.send(image)
+        }
+    });
 
 client.login(process.env.BOT_TOKEN);
