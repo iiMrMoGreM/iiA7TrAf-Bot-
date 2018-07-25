@@ -281,7 +281,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
 
 client.on('message', message =>{
   let args = message.content.split(' ');
-  let prefix = '.';
+
 if(args[0] === `${prefix}emoji`){
 let findEmoji = args[1];
 
