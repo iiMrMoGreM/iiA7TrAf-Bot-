@@ -338,7 +338,7 @@ client.on('message', message => {
   if (message.content.startsWith( prefix + "sug")) {
   if (!message.channel.guild) return;
   let args = message.content.split(" ").slice(1).join(' ');
-  client.channels.get("ايدي الروم").send(
+  client.channels.get("470462805011726336").send(
       "\n" + "**" + "● السيرفر :" + "**" +
       "\n" + "**" + "» " + message.guild.name + "**" +
       "\n" + "**" + " ● المرسل : " + "**" +
