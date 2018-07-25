@@ -363,46 +363,37 @@ client.on('message', message => {
 
 
 
-client.on('message',function(message) {
-    let w = ['Rock','Paper','Scissors'];
-   if(message.content.startsWith(prefix + "rps")) {
-       message.channel.send(`\`\`\`css
-Choose one of the following.
-#1 ( Rock )
-#2 ( Paper )
-#3 ( Scissors )
-\`\`\`
+client.on('message', function (message) {
+    var messageParts = message.content.split(' ');
 
-__امامك  5 توان للاختيار__`)
-.then(() => {
-  message.channel.awaitMessages(response => response.content === '1', {
-    max: 1,
-    time: 5000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-      if(message.author !== message.author)return;
-     message.channel.send('🏵 ' + w[Math.floor(Math.random() * w.length)]);
-    });
+    var command = messageParts[0].toLowerCase();
+    var parameters = messageParts.splice(1, messageParts.length);
+
+
+    switch (command) {
+        case "-join":
+        if(message.guild.voiceConnection){
+            message.reply('I\'m Already In A Voice Connection!');
+        }else if(!message.member.voiceChannel){
+            message.reply('You\'re Not In A Voice Channel!');
+        }else{
+    let channel = message.member.voiceChannel;
+    channel.join();
+        }
+            break;
+case "-play":
+        if(!message.guild.voiceConnection){
+            message.reply('I\'m Not In A Voice Channel!');
+        }else{
+//كود بدء الموسيقى مالك
+        }
+            var voiceConnection = client.voiceConnections.first();
+
+            break;
+}
 });
-  message.channel.awaitMessages(response => response.content === '2', {
-    max: 1,
-    time: 5000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-     message.channel.send('🏵 ' + w[Math.floor(Math.random() * w.length)]);
-    });
-      message.channel.awaitMessages(response => response.content === '3', {
-    max: 1,
-    time: 5000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-     message.channel.send('🏵 ' + w[Math.floor(Math.random() * w.length)]);
-    });
-   } 
-});
+
+
 
 
 client.login(process.env.BOT_TOKEN);
