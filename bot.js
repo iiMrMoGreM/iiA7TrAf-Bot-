@@ -277,6 +277,10 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   });
 
 
+
+
+
+
    const math = require('math-expression-evaluator');   
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'calc')) {
