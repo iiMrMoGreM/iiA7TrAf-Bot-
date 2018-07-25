@@ -406,4 +406,17 @@ case "$play":
 
 
 
+client.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+if (message.content.startsWith(prefix + 'مسح')) {
+ let args = message.content.split(" ").slice(1)
+    let messagecount = parseInt(args);
+    if (args > 100) return message.reply("اعلى حد للمسح هو 100").then(messages => messages.delete(5000))
+    if (!messagecount) return message.reply("ااختر كمية المسح من 1-100").then(messages => messages.delete(5000))
+    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.send(`\`${args}\` تم المسح`).then(messages => messages.delete(5000));
+  }
+  });
+
+
 client.login(process.env.BOT_TOKEN);
