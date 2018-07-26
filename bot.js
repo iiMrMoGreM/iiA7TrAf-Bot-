@@ -441,7 +441,7 @@ client.on('guildMemberAdd', member => {
         .setColor('RED')
         .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
     
-    var channel =member.guild.channels.find('name', 'welcome')
+    var channel =member.guild.channels.find('name', '💜𝓦𝓮𝓵𝓬𝓸𝓶𝓮💜')
     if (!channel) return;
     channel.send({embed : embed});
     })
