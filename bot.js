@@ -604,7 +604,7 @@ var ment = message.mentions.users.first();
 
 
 client.on('message', message => { 
-    var prefix ="!";
+ 
            if (message.content.startsWith(prefix + "id")) {
      var args = message.content.split(" ").slice(1);
      let user = message.mentions.users.first();
