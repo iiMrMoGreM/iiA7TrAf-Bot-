@@ -524,7 +524,7 @@ client.on('voiceStateUpdate', (old, now) => {
   if (currentSize !== size) channel.setName(`Voice Online: ${currentSize}`);
 });
 
-
+const fs = require('fs');
    const math = require('math-expression-evaluator');   
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'calc')) {
