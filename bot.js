@@ -409,20 +409,17 @@ client.on("message", message => {
     });
 
 
-  client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setTitle(` اهلاً و سهلاً :raised_hand::skin-tone-1: :smiley:`)
-        .setDescription(`منور السيرفر يا حلو :blush: `)
-        .addField(':bust_in_silhouette:  انت رقم',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
-        .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
-    
-    var channel =member.guild.channels.find('name', '💜𝓦𝓮𝓵𝓬𝓸𝓶𝓮💜')
-    if (!channel) return;
-    channel.send({embed : embed});
-    }) 
+ client.on('guildMemberAdd', m => {
+  var c = m.guild.channels.find('name', '💜𝓦𝓮𝓵𝓬𝓸𝓶𝓮💜');
+  if(!c) return;
+
+  var s = new Discord.RichEmbed()
+  .setAuthor(m.user.username, m.user.avatarURL)
+  .setTitle('اهلاً و سهلاً :raised_hand::skin-tone-1: :smiley:')
+  .setDescription(`منور السيرفر يا حلو :blush:\nانت العضو رقم ${m.guild.meberCount}`)
+  .setFooter(m.guild.name, m.guild.iconURL);
+  c.send(s);
+});
     
     client.on('guildMemberRemove', member => {
         var embed = new Discord.RichEmbed()
