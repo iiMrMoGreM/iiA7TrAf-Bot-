@@ -409,16 +409,16 @@ client.on("message", message => {
     });
 
 
-client.on('guildMemberAdd', m => {
-  var c = m.guild.channels.find('name', '');
+client.on('guildMemberAdd', member => {
+  var c = member.guild.channels.find('name', '💜𝓦𝓮𝓵𝓬𝓸𝓶𝓮💜') || member.guild.channels.get('467745625220317185');
   if(!c) return;
 
-  var s = new Discord.RichEmbed()
+  var embed = new Discord.RichEmbed()
   .setAuthor(m.user.username, m.user.avatarURL)
-  .setTitle('اهلاً و سهلاً :raised_hand::skin-tone-1: :smiley:')
-  .setDescription(`منور السيرفر يا حلو :blush:\n:bust_in_silhouette: انت الرقم ${m.guild.memberCount}`)
-  .setFooter(m.guild.name, m.guild.iconURL);
-  c.send(s);
+  .setTitle(`:raised_hand::skin-tone-1: :smiley:  اهلاً و سهلاً`)
+  .setDescription(`:blush:  :purple_heart:  منور السيرفر يا حلو\n:bust_in_silhouette: انت الرقم\n[ ${m.guild.memberCount} ]`)
+  .setFooter(`${m.guild.name} :: ${new Date()}`, m.guild.iconURL);
+  c.send(embed);
 });
     
     client.on('guildMemberRemove', member => {
