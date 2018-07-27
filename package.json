@@ -26,6 +26,7 @@
     "simple-youtube-api": "^5.0.2",
     "snekfetch": "^3.6.4",
     "sqlite": "^2.9.1",
+    "date-format": "^1.2.0",
     "sqlite3": "^4.0.0",
     "youtube-info": "^1.2.0",
     "ytdl-core": "^0.20.3"
@@ -34,4 +35,3 @@
     "node": "8.4.0"
   }
 }
-
