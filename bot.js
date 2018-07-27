@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const moment = require('moment');
+moment.locale('ar-TN');
 const prefix = '$'
 
 
@@ -622,7 +624,7 @@ client.on('message', message => {
         } else {
             h = message.member
         }
-               moment.locale('ar-TN');
+               
       var id = new  Discord.RichEmbed()
       .setAuthor(message.author.username, message.author.avatarURL) 
     .setColor("#707070")
