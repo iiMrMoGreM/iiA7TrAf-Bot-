@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const fs = require('fs');
 const dateFormat = require('date-format');
 const Canvas = require('canvas');
 const moment = require('moment');
