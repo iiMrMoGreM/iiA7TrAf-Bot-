@@ -416,8 +416,9 @@ client.on('guildMemberAdd', member => {
   var embed = new Discord.RichEmbed()
   .setAuthor(member.user.username, member.user.avatarURL)
   .setTitle(`:raised_hand::skin-tone-1: :smiley:  اهلاً و سهلاً`)
+  .setThumbnail(member.user.avatarURL)
   .setDescription(`:blush:  :purple_heart:  منور السيرفر يا حلو\n:bust_in_silhouette: انت الرقم\n[ ${member.guild.memberCount} ]`)
-  .setFooter(`${member.guild.name} :: ${new Date()}`, member.guild.iconURL);
+  .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, member.guild.iconURL);
   c.send(embed);
 });
 
