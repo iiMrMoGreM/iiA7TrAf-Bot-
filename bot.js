@@ -409,14 +409,14 @@ client.on("message", message => {
     });
 
 
- client.on('guildMemberAdd', m => {
-  var c = m.guild.channels.find('name', '💜𝓦𝓮𝓵𝓬𝓸𝓶𝓮💜');
+client.on('guildMemberAdd', m => {
+  var c = m.guild.channels.find('name', '');
   if(!c) return;
 
   var s = new Discord.RichEmbed()
   .setAuthor(m.user.username, m.user.avatarURL)
   .setTitle('اهلاً و سهلاً :raised_hand::skin-tone-1: :smiley:')
-  .setDescription(`منور السيرفر يا حلو :blush:\nانت العضو رقم ${m.guild.meberCount}`)
+  .setDescription(`منور السيرفر يا حلو :blush:\n:bust_in_silhouette: انت الرقم ${m.guild.memberCount}`)
   .setFooter(m.guild.name, m.guild.iconURL);
   c.send(s);
 });
