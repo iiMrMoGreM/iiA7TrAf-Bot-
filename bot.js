@@ -5,7 +5,6 @@ const dateFormat = require('date-format');
 const Canvas = require('canvas');
 const moment = require('moment');
 moment.locale('ar-TN');
-const hero = require('hero');
 const prefix = '$'
 
 
@@ -719,14 +718,14 @@ client.on('message', message => {
   if(message.content.startsWith(prefix + "help")) {
     let helpEmbeed = new Discord.RichEmbed()
     .setAuthor(message.author.username,message.author.avatarURL)
-    .setThumbnail(hero.user.avatarURL)
-    .setTitle(`${hero.user.username} مجموعة اوامر بوت`)
+    .setThumbnail(client.user.avatarURL)
+    .setTitle(`${client.user.username} مجموعة اوامر بوت`)
     .addField('**:earth_africa: الأوامر العامة**','`id` , `emoji` , `mcskin` , `sug` , `رابط` , `image` , `clac` ,  ')
     .addField('**:hammer_pick: الأوامر الاٍدارية**','`server` , `bc` , `clear` ` ')
     .addField('**:video_game: `لا يوجد لدي بوتنا`')
     .addField('**:money_with_wings: `لايوجد لدي بوتنا`')
     .addField('**:headphones: اوامر الموسيقى**','`join` , `play` , `volume` , `queue` , `np` , `pause` , `resume` , `skip`')
-    .setFooter(hero.user.username,hero.user.avatarURL);
+    .setFooter(client.user.username,client.user.avatarURL);
       message.channel.send(helpEmbeed);
   }
 });
