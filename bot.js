@@ -682,12 +682,10 @@ var ment = message.mentions.users.first();
 
 
 
-const id = JSON.parse(fs.readFileSync("./id/mozo.json", "utf8"));
+const id = {};
 client.on("message", message => {
   if (message.author.bot) return;
-fs.writeFile('./id/mozo.json', JSON.stringify(id), (err) => {
-if (err) console.error(err);
-});
+
 });
       client.on('message', message => {
           if(!id[message.author.id]) id[message.author.id] ={
@@ -700,9 +698,7 @@ if (err) console.error(err);
               id[message.author.id].points = 10;
               id[message.author.id].level = Math.floor(id[message.author.id].level+4);
           }
-          fs.writeFile('./id/mozo.json', JSON.stringify(id), (err) => {
-if (err) console.error(err);
-});
+          
     
     client.on("message", message => {
   if (message.author.bot) return;
@@ -743,7 +739,7 @@ if (!id[getvalueof.id]) id[getvalueof.id] = {textrank: 0,points: 1};
             let Image = Canvas.Image,
             canvas = new Canvas(400, 200),
             ctx = canvas.getContext('2d');
-            fs.readFile("./id/rank.png", function (err, Background) {
+            fs.readFile("./rank.png", function (err, Background) {
             if (err) return console.log(err);
             let id = Canvas.Image;
             let ground = new Image;
@@ -807,7 +803,6 @@ message.channel.sendFile(canvas.toBuffer());
 }
 });
 });
-
 
 
 	
