@@ -714,7 +714,7 @@ client.on('message', message => {
 }       });
 
 	
-	hero.on('message',async message => {
+	client.on('message',async message => {
   if(message.content.startsWith(prefix + "help")) {
     let helpEmbeed = new Discord.RichEmbed()
     .setAuthor(message.author.username,message.author.avatarURL)
