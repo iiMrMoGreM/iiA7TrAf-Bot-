@@ -684,7 +684,7 @@ var ment = message.mentions.users.first();
 
 
 client.on('message', message => { 
-    var prefix ="!";
+    
            if (message.content.startsWith(prefix + "id")) {
      var args = message.content.split(" ").slice(1);
      let user = message.mentions.users.first();
@@ -714,7 +714,21 @@ client.on('message', message => {
 }       });
 
 	
-	
+	hero.on('message',async message => {
+  if(message.content.startsWith(prefix + "help")) {
+    let helpEmbeed = new Discord.RichEmbed()
+    .setAuthor(message.author.username,message.author.avatarURL)
+    .setThumbnail(hero.user.avatarURL)
+    .setTitle(`${hero.user.username} مجموعة اوامر بوت`)
+    .addField('**:earth_africa: الأوامر العامة**','`id` , `emoji` , `mcskin` , `sug` , `رابط` , `image` , `clac` ,  ')
+    .addField('**:hammer_pick: الأوامر الاٍدارية**','`server` , `bc` , `clear` ` ')
+    .addField('**:video_game: `لا يوجد لدي بوتنا`')
+    .addField('**:money_with_wings: `لايوجد لدي بوتنا`')
+    .addField('**:headphones: اوامر الموسيقى**','`join` , `play` , `volume` , `queue` , `np` , `pause` , `resume` , `skip`')
+    .setFooter(hero.user.username,hero.user.avatarURL);
+      message.channel.send(helpEmbeed);
+  }
+});
 
 
 
