@@ -733,7 +733,7 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-  var c = client.channels.get('ايد ي الروم');
+  var c = client.channels.get('473154829775273994');
   client.setInterval(() => {
     c.setName('W');
     c.setName('We');
