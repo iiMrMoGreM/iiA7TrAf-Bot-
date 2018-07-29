@@ -732,4 +732,30 @@ client.on('message', message => {
 
 
 
+client.on('ready', () => {
+  var c = client.channels.get('ايد ي الروم');
+  client.setInterval(() => {
+    c.setName('W');
+    c.setName('We');
+    c.setName('Wel');
+    c.setName('Welc');
+    c.setName('Welco');
+    c.setName('Welcom');
+    c.setName('Welcome');
+    c.setName('T');
+    c.setName('To');
+    c.setName('iiA');
+    c.setName('iiA7');
+    c.setName('iiA7T');
+    c.setName('iiA7Tr');
+    c.setName('iiA7TrA');
+    c.setName('iiA7TrAf');
+    c.setName('Ga');
+    c.setName('Gam');
+    c.setName('Game');
+    c.setName('Games');
+  },5000);
+});
+
+
 client.login(process.env.BOT_TOKEN);
