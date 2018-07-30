@@ -654,7 +654,7 @@ if(message.content.startsWith(prefix + "help")) {
   .setTitle(`${client.user.username} مجموعة اوامر بوت`)
   .addField('**:earth_africa: الأوامر العامة**','`id` , `emoji` , `mcskin` , `sug` , `رابط` , `image` , `clac` ,  ')
   .addField('**:hammer_pick: الأوامر الاٍدارية**','`server` , `bc` , `clear` ` ')
-  .addField('**:video_game: `فكك` , `ايموجي , `صراحة`')
+  .addField('**:video_game: اوامر الالعاب**', '`ايموجي` , `فكك` , `صراحة`')
   .addField('**:money_with_wings: `لايوجد لدي بوتنا`')
   .addField('**:headphones: اوامر الموسيقى**','`join` , `play` , `volume` , `queue` , `np` , `pause` , `resume` , `skip`')
   .setFooter(client.user.username,client.user.avatarURL);
