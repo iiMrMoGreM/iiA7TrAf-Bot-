@@ -646,20 +646,20 @@ client.on('message', message => {
 }       });
 
 	
-	client.on('message',async message => {
-  if(message.content.startsWith(prefix + "help")) {
-    let helpEmbeed = new Discord.RichEmbed()
-    .setAuthor(message.author.username,message.author.avatarURL)
-    .setThumbnail(client.user.avatarURL)
-    .setTitle(`${client.user.username} مجموعة اوامر بوت`)
-    .addField('**:earth_africa: الأوامر العامة**','`id` , `emoji` , `mcskin` , `sug` , `رابط` , `image` , `clac` ,  ')
-    .addField('**:hammer_pick: الأوامر الاٍدارية**','`server` , `bc` , `clear` ` ')
-    .addField('**:video_game: `لا يوجد لدي بوتنا`')
-    .addField('**:money_with_wings: `لايوجد لدي بوتنا`')
-    .addField('**:headphones: اوامر الموسيقى**','`join` , `play` , `volume` , `queue` , `np` , `pause` , `resume` , `skip`')
-    .setFooter(client.user.username,client.user.avatarURL);
-      message.channel.send(helpEmbeed);
-  }
+client.on('message',async message => {
+if(message.content.startsWith(prefix + "help")) {
+  let helpEmbeed = new Discord.RichEmbed()
+  .setAuthor(message.author.username,message.author.avatarURL)
+  .setThumbnail(client.user.avatarURL)
+  .setTitle(`${client.user.username} مجموعة اوامر بوت`)
+  .addField('**:earth_africa: الأوامر العامة**','`id` , `emoji` , `mcskin` , `sug` , `رابط` , `image` , `clac` ,  ')
+  .addField('**:hammer_pick: الأوامر الاٍدارية**','`server` , `bc` , `clear` ` ')
+  .addField('**:video_game: `فكك` , `ايموجي , `صراحة`')
+  .addField('**:money_with_wings: `لايوجد لدي بوتنا`')
+  .addField('**:headphones: اوامر الموسيقى**','`join` , `play` , `volume` , `queue` , `np` , `pause` , `resume` , `skip`')
+  .setFooter(client.user.username,client.user.avatarURL);
+    message.channel.send(helpEmbeed);
+}
 });
 
 
