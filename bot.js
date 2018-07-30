@@ -728,7 +728,37 @@ client.on('message', message => {
     if (message.content.startsWith(prefix + 'ايموجي')) { 
         if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
     
-    const type = require('./emojis.json'); 
+    const type = [
+    {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/72/twitter/134/face-with-look-of-triumph_1f624.png",
+        "answers": [":triumph:"]
+    },
+    {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/baby_1f476.png",
+        "answers": [":baby:"]
+    },
+    {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/see-no-evil-monkey_1f648.png",
+        "answers": [":japanese_goblin:"]
+    },
+        {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/flag-for-yemen_1f1fe-1f1ea.png",
+        "answers": [":flag_ye:"]
+    },
+        {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/comet_2604.png",
+        "answers": [":comet:"]
+    },
+        {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/trident-emblem_1f531.png",
+        "answers": [":trident:"]
+    },
+        {
+        "type": "https://emojipedia-us.s3.amazonaws.com/thumbs/120/twitter/134/fleur-de-lis_269c.png",
+        "answers": [":fleur_de_lis:"]
+    }
+
+] 
     const item = type[Math.floor(Math.random() * type.length)]; 
     const filter = response => { 
         return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
