@@ -885,7 +885,7 @@ client.on('message',async message => {
                      setTimeout(() => {
                        let users = m.reactions.get("✨").users;
                        let list = users.array().filter(u => u.id !== m.author.id);
-                       let gFilter = list[Math.floor(Math.random() * list.length) + 1]
+                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
                        let endEmbed = new Discord.RichEmbed()
                        .setAuthor(message.author.username, message.author.avatarURL)
                        .setTitle(title)
