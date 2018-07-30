@@ -413,11 +413,10 @@ client.on("message", message => {
     });
 
 
-var moment = require("moment");
+
          const table = require('table')
 const arraySort = require('array-sort');
-var Canvas = require('canvas');
-var jimp = require('jimp');
+
 
 
 var dat = JSON.parse("{}");
