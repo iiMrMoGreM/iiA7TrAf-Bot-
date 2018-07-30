@@ -837,7 +837,7 @@ client.on('message', message => {
 
 
 
-hero.on('message',async message => {
+client.on('message',async message => {
   var room;
   var title;
   var duration;
