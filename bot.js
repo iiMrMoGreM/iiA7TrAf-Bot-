@@ -664,7 +664,5 @@ client.on('message', message => {
 
 
 
-client.on('ready', () => {
-
 
 client.login(process.env.BOT_TOKEN);
