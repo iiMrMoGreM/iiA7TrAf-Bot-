@@ -396,6 +396,9 @@ if (message.content.startsWith(prefix + 'clear')) {
   });
 
 
+
+
+
 client.on("message", message => {
   
     if (!message.content.startsWith(prefix)) return;
