@@ -662,18 +662,7 @@ client.on('message', message => {
   }
 });
 
-client.on('ready', () => {
-  var c = client.channels.get('473154829775273994');
-  client.setInterval(() => {
-    c.setName('T');
-    c.setName('We');
-    c.setName('Wel');
-    c.setName('Welc');
-    c.setName('Welco');
-    c.setName('Welcom');
-    c.setName('Welcome');
-  },5000);
-});
+
 
 
 client.login(process.env.BOT_TOKEN);
