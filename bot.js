@@ -383,88 +383,17 @@ client.on('message', message => {
 
 
 
-client.on('message', async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-
-  let args = message.content.split(" ");
-  let command = args[0];
-
-  if(message.content.startsWith(prefix + "clear")) {
-    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('**انت لا تملك الخصائص الكافية.**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!args[1]) {
-      var stop = true;
-      var msg = parseInt(100);
-
-      stop = false;
-      setTimeout(() => {
-        stop = true;
-      },3005);
-      setInterval(() => {
-        if(stop === true) return;
-        message.channel.fetchMessages({
-          limit: msg
-        }).then(m => {
-          message.channel.bulkDelete(msg).then(() => {
-            message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-            });
-          });
-        });
-      },1000);
-    } else if(args[1]) {
-      if(args[1] <= 100) {
-          message.channel.fetchMessages({
-              limit: msg
-          }).then(m => {
-              message.channel.bulkDelete(m).then(() => {
-                  message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-                  });
-              });
-          });
-      } else if(args[1] <= 200) {
-        stop = true;
-        setTimeout(() => {
-          stop = false;
-        },2001);
-        setInterval(() => {
-          if(stop === true) return;
-          message.channel.fetchMessages({
-            limit: msg
-          }).then(m => {
-            message.channel.bulkDelete(m).then(() => {
-                message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-                  });
-            });
-          });
-        },1000);
-      } else if(args[1] <= 300) {
-        stop = true;
-        setTimeout(() => {
-          stop = false;
-        },2001);
-        setInterval(() => {
-          if(stop === true) return;
-          message.channel.fetchMessages({
-            limit: msg
-          }).then(m => {
-            message.channel.bulkDelete(m).then(() => {
-            message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(3000);
-                  });
-            });
-          });
-        });
-      }
-    }
+client.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+if (message.content.startsWith(prefix + 'clear')) {
+ let args = message.content.split(" ").slice(1)
+    let messagecount = parseInt(args);
+    if (args > 100) return message.reply("اعلى حد للمسح هو 100").then(messages => messages.delete(5000))
+    if (!messagecount) return message.reply("ااختر كمية المسح من 1-100").then(messages => messages.delete(5000))
+    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.send(`\`${args}\` تم المسح`).then(messages => messages.delete(5000));
   }
-});
+  });
 
 
 client.on("message", message => {
@@ -733,29 +662,6 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-  var c = client.channels.get('473154829775273994');
-  client.setInterval(() => {
-    c.setName('W');
-    c.setName('We');
-    c.setName('Wel');
-    c.setName('Welc');
-    c.setName('Welco');
-    c.setName('Welcom');
-    c.setName('Welcome');
-    c.setName('T');
-    c.setName('To');
-    c.setName('iiA');
-    c.setName('iiA7');
-    c.setName('iiA7T');
-    c.setName('iiA7Tr');
-    c.setName('iiA7TrA');
-    c.setName('iiA7TrAf');
-    c.setName('Ga');
-    c.setName('Gam');
-    c.setName('Game');
-    c.setName('Games');
-  },5000);
-});
 
 
 client.login(process.env.BOT_TOKEN);
