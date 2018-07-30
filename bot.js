@@ -665,7 +665,7 @@ client.on('message', message => {
 client.on('ready', () => {
   var c = client.channels.get('473154829775273994');
   client.setInterval(() => {
-    c.setName('W');
+    c.setName('T');
     c.setName('We');
     c.setName('Wel');
     c.setName('Welc');
