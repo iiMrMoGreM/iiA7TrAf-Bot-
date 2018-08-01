@@ -520,7 +520,7 @@ client.on("guildMemberAdd", member => {
 }).catch(console.error)
 })
 
-
+لل
 const client = new Discord.Client();
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "vc")) {
