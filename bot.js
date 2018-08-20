@@ -856,8 +856,7 @@ client.on('message',async message => {
 });
 
 client.on('ready',async () => {
-  // Welcome To iiA7TrAf Games
-  let chan = client.channels.get(''); // 481155507994886145
+ // Welcome To iiA7TrAf Gameslet chan = client.channels.get('481155507994886145'); //
   setInterval(() => {
     chan.setName('W');
     chan.setName('We');
