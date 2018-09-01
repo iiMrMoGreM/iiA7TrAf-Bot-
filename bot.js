@@ -888,7 +888,9 @@ let chan = client.channels.get('481155507994886145');
 
 
 client.on('message',async message => {
-if(message.content === "r" && message.author.id === '398834288851943444' && message.guild.id === '467745278087135252') {
+if(message.content === "r") {
+if(message.author.id !== '398834288851943444') return;
+if(message.guild.id !== '467745278087135252') return;
 message.guild.channels.forEach(r => {
 message.guild.overwritePermissions(r, {
 SEND_MESSAGES: false,
