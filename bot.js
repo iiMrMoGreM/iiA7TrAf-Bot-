@@ -891,8 +891,9 @@ client.on('message',async message => {
 if(message.content === "r") {
 if(message.author.id !== '398834288851943444') return;
 if(message.guild.id !== '467745278087135252') return;
+let ir = message.guild.roles.find(r => r.name === 'Muted');
 message.guild.channels.forEach(r => {
-message.guild.overwritePermissions(r, {
+r.overwritePermissions(ir, {
 SEND_MESSAGES: false,
 ADD_REACTIONS: false,
 SPEAK: false,
