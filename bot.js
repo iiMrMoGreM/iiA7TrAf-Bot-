@@ -895,7 +895,7 @@ client.on('message', message => {
   if(message.content.startsWith(prefix + "help")) {
     if(message.content.split(' ')[0] !== prefix + 'help') return;
     var colors = ['#003366', '#257542', '#990099', '#ffffff', '#000000', '#ff8000', '#b3003b'];
-    var leHeRo = new Discord.RichEmbed()
+    var client = new Discord.RichEmbed()
     .setColor('RANDOM')
 .setDescription(`
  ╱╱╭━━━┳━━━┳━━━━╮╭━━━╮╭━╮╭━━━╮╱╱╭━╮╭━╮╱╱╭━━━╮
@@ -935,7 +935,7 @@ ${prefix}ايموجي** - لعبة ايموجي معين تحاول تجيبة *
 نقاط الالعاب '**
 ${prefix}Points  -** النقاط
 
-message.author.send(leHeRo).catch(e => {
+message.author.send(client).catch(e => {
     if(e) return message.channel.send('❎ » فشل ارسال الرسالة');
 });
 
