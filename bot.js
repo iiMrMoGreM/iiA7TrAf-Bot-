@@ -593,22 +593,6 @@ client.on('message', message => {
 }       });
 
 	
-client.on('message',async message => {
-if(message.content.startsWith(prefix + "help")) {
-  let helpEmbeed = new Discord.RichEmbed()
-  .setAuthor(message.author.username,message.author.avatarURL)
-  .setThumbnail(client.user.avatarURL)
-  .setTitle(`${client.user.username} مجموعة اوامر بوت`)
-  .addField('**:earth_africa: الأوامر العامة**','`id` , `emoji` , `mcskin` , `sug` , `رابط` , `image` , `clac` ,  ')
-  .addField('**:hammer_pick: الأوامر الاٍدارية**','`server` , `bc` , `clear` ` ')
-  .addField('**:video_game: اوامر الالعاب**', '`ايموجي` , `فكك` , `صراحة`')
-  .addField('**:money_with_wings: `لايوجد لدي بوتنا`')
-  .addField('**:headphones: اوامر الموسيقى**','`join` , `play` , `volume` , `queue` , `np` , `pause` , `resume` , `skip`')
-  .setFooter(client.user.username,client.user.avatarURL);
-    message.channel.send(helpEmbeed);
-}
-});
-
 
 
 
@@ -916,7 +900,12 @@ hero.on('message', message => {
 .setDescription(`
  
 
-
+  _   _      _      _____   _____             _       __      ____           __  __          ____  
+ (_) (_)    / \    |___  | |_   _|  _ __     / \     / _|    / ___|   __ _  |  \/  |   ___  / ___| 
+ | | | |   / _ \      / /    | |   | '__|   / _ \   | |_    | |  _   / _` | | |\/| |  / _ \ \___ \ 
+ | | | |  / ___ \    / /     | |   | |     / ___ \  |  _|   | |_| | | (_| | | |  | | |  __/  ___) |
+ |_| |_| /_/   \_\  /_/      |_|   |_|    /_/   \_\ |_|      \____|  \__,_| |_|  |_|  \___| |____/ 
+                                                                                                   
 أوامر عامة '** 
 ${prefix}id** -   معلومات حسابك**
 ${prefix}emoji** - للحصول علي رابط تحميل الايموجي الذى تريدة**
