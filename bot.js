@@ -274,7 +274,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("رابط")) {
+    if (message.content.startsWith("Link")) {
 
   message.channel.createInvite({
         thing: true,
@@ -638,8 +638,9 @@ msg.channel.send(`${item.type}`).then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
         message.channel.send(`${collected.first().author} ✅ **مبروك لقد كسبت نقطه
-لمعرفة نقطاك الرجاء كتابة %نقاطي**`);
-        console.log(`[Typing] ${collected.first().author} typed the word.`);
+$points لمعرفة نقطاك الرجاء كتابة **`);
+
+console.log(`[Typing] ${collected.first().author} typed the word.`);
             let userData = points[message.author.id];
             userData.points++;
           })
@@ -901,6 +902,59 @@ CONNECT: false
 });
 });
 }
+});
+
+
+
+
+hero.on('message', message => {
+  if(message.content.startsWith(prefix + "help")) {
+    if(message.content.split(' ')[0] !== prefix + 'help') return;
+    var colors = ['#003366', '#257542', '#990099', '#ffffff', '#000000', '#ff8000', '#b3003b'];
+    var leHeRo = new Discord.RichEmbed()
+    .setColor('RANDOM')
+.setDescription(`
+  _   _      _      _____   _____             _       __      ____           __  __          ____  
+ (_) (_)    / \    |___  | |_   _|  _ __     / \     / _|    / ___|   __ _  |  \/  |   ___  / ___| 
+ | | | |   / _ \      / /    | |   | '__|   / _ \   | |_    | |  _   / _` | | |\/| |  / _ \ \___ \ 
+ | | | |  / ___ \    / /     | |   | |     / ___ \  |  _|   | |_| | | (_| | | |  | | |  __/  ___) |
+ |_| |_| /_/   \_\  /_/      |_|   |_|    /_/   \_\ |_|      \____|  \__,_| |_|  |_|  \___| |____/ 
+                                                                                                   
+
+
+أوامر عامة '** 
+${prefix}id** -   معلومات حسابك**
+${prefix}emoji** - للحصول علي رابط تحميل الايموجي الذى تريدة**
+${prefix}mcskin** - لرؤية سكنك فى ماين كرافت**
+${prefix}sug** -   لأقتراح شئ**
+${prefix}Link** -  للحصول علي رابط السيرفر**
+${prefix}image** -  لعرض صورة السيرفر**
+${prefix}clac** -  لحسابة اي رقم تريدة**
+
+أوامر ادارية '**
+${prefix}server** - معلومات السيرفر**
+${prefix}mute** - لأعطاء شخص ميوت بالسيرفر كتابي وصوتي**
+${prefix}giveaway** - لعمل قيف اواي**
+${prefix}vc** - لعمل روم بعدد الاعضاء في الرومات الصوتية**
+${prefix}bc** - لنشر رسالة محددة فى السيرفر بالكامل**
+${prefix}clear** - لمسح عدد معين من الشات**
+
+
+أومر الألعاب '**
+${prefix}صراحة** - لعبة صراحة**
+${prefix}فكك** - لعبة تفكيك الكلمة
+${prefix}ايموجي** - لعبة ايموجي معين تحاول تجيبة **
+
+
+
+نقاط الالعاب '**
+${prefix}Points  -** النقاط
+
+message.author.send(leHeRo).catch(e => {
+    if(e) return message.channel.send('❎ » فشل ارسال الرسالة');
+});
+
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
