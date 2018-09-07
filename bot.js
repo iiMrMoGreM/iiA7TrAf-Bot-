@@ -840,36 +840,6 @@ client.on('message',async message => {
   }
 });
 
-client.on('ready',async () => {
-  // Welcome To iiA7TrAf Games
-let chan = client.channels.get('481155507994886145');
-  setInterval(() => {
-    chan.setName('W');
-    chan.setName('We');
-    chan.setName('Wel');
-    chan.setName('Welc');
-    chan.setName('Welco');
-    chan.setName('Welcom');
-    chan.setName('Welcome');
-    chan.setName('Welcome ');
-    chan.setName('Welcome T');
-    chan.setName('Welcome To');
-    chan.setName('Welcome To ');
-    chan.setName('Welcome To ii');
-    chan.setName('Welcome To iiA');
-    chan.setName('Welcome To iiA7');
-    chan.setName('Welcome To iiA7t');
-    chan.setName('Welcome To iiA7tr');
-    chan.setName('Welcome To iiA7tra');
-    chan.setName('Welcome To iiA7traf');
-    chan.setName('Welcome To iiA7traf G');
-    chan.setName('Welcome To iiA7traf Ga');
-    chan.setName('Welcome To iiA7traf Gam');
-    chan.setName('Welcome To iiA7traf Game');
-    chan.setName('Welcome To iiA7traf Games');
-  }, 15000);
-});
-
 
 
 client.on('message',async message => {
