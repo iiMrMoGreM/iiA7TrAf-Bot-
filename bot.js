@@ -869,30 +869,84 @@ client.on('guildMemberAdd',async member => {
 
 
 
-  const arraySort = require('array-sort'),
-table = require('table');
+const fs = require("fs")
 
-client.on('message' , async (message) => {
-
-    if(message.content.startsWith(prefix + "invites")) {
-
-  let invites = await message.guild.fetchInvites();
-
-    invites = invites.array();
-
-    arraySort(invites, 'uses', { reverse: true });
-
-    let possibleInvites = [['الدعوات', 'الاشخاص']];
-    invites.forEach(i => {
-      possibleInvites.push([i.inviter.username , i.uses]);
-    })
-    const embed = new Discord.RichEmbed()
-    .setColor(0x7289da)
-    .setTitle("دعوات السيرفر")
-    .addField(' المتصدرين' , `${table.table(possibleInvites)}`)
-
-    message.channel.send(embed)
-    }
+client.on('ready', () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`in ${client.guilds.size} servers `)
+    console.log(`[Users] ${client.users.size}`)
+    client.user.setStatus("dnd")
 });
+let points = JSON.parse(fs.readFileSync('./typing/typePTS.json', 'utf8')); 
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+	points: 0,
+  };
+if (message.content.startsWith(prefix + 'سرعة')) {
+	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+const type = require('./typing/type.json'); 
+const item = type[Math.floor(Math.random() * type.length)]; 
+const filter = response => { 
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**لديك 15 ثانية لكتابة الكلمة**').then(msg => {
+	let embed = new Discord.RichEmbed()
+	.setColor('#000000')
+	.setFooter("سرعة كتابة | لرؤية مجموع نقاطك اكتب $نقاطي |", 'https://c.top4top.net/p_814rjkod1.png')
+	.setDescription(`**قم بكتابة : ${item.type}**`) 
+	
+	msg.channel.sendEmbed(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+		message.channel.send(`${collected.first().author} ✅ **لقد قمت بكتابة الكلمة بالوقت المناسب**`);
+		console.log(`[Typing] ${collected.first().author} typed the word.`);
+            let won = collected.first().author; 
+            points[won.id].points++;
+          })
+          .catch(collected => { 
+            message.channel.send(`:x: **لم يقم أحد بكتابة الجملة بالوقت المناسب**`);
+			console.log(`[Typing] Error: No one type the word.`);
+          })
+		})
+	})
+}
+});
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'نقاطي')) {
+	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+	let userData = points[message.author.id];
+	let embed = new Discord.RichEmbed()
+    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
+	.setColor('#000000')
+	.setFooter("بوت سرعة الكتابة", 'https://c.top4top.net/p_814rjkod1.png')
+	.setDescription(`نقاطك: \`${userData.points}\``)
+	message.channel.sendEmbed(embed)
+  }
+  fs.writeFile("./typing/typePTS.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+  })
+});
+client.on('guildCreate', guild => {
+	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); 
+});
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'help')) {
+	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+	let embed = new Discord.RichEmbed()
+    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
+	.setColor('#000000')
+	.addField("$سرعة","**لبدأ لعبة سرعة الكتابة**")
+	.addField("$نقاطي","**لعرض النقاط الخاصة بك**")
+	.setFooter("بوت سرعة الكتابة", 'https://c.top4top.net/p_814rjkod1.png')
+	.setDescription(`Programmed by: \`NoName Team\`
+	
+	\`TestaLagusa⁶⁹♆#2010\``)
+	message.channel.sendEmbed(embed).then(m => m.delete(10000));
+
+}
+});
+
 
 client.login(process.env.BOT_TOKEN);
