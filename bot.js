@@ -876,7 +876,6 @@ client.on('ready', () => {
     console.log(`[Users] ${client.users.size}`)
     client.user.setStatus("dnd")
 });
-let points = JSON.parse(fs.readFileSync('./typing/typePTS.json', 'utf8')); 
 
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
