@@ -869,7 +869,6 @@ client.on('guildMemberAdd',async member => {
 
 
 
-const fs = require("fs")
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
