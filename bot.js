@@ -5,7 +5,7 @@ const dateFormat = require('date-format');
 const Canvas = require('canvas');
 const moment = require('moment');
 moment.locale('ar-TN');
-const prefix = '5'
+const prefix = '$'
 
 
 
