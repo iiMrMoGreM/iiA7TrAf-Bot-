@@ -10,7 +10,7 @@ const prefix = '$'
 
 client.on('ready', function(){
     var ms = 10000 ;
-    var setGame = [' ','iiMrMoGreM | << ','By ','Ultimate Bot',''];
+    var setGame = [' ','iiMrMoGreM | << ','By ','iiA7TrAf Bot',''];
     var i = -1;
     var j = 0;
     setInterval(function (){
